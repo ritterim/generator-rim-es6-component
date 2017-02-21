@@ -31,7 +31,7 @@ module.exports = class extends Generator {
 
   _template() {
     //package.json copy
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath('package.json'),
       { name: this.name }
@@ -57,25 +57,25 @@ module.exports = class extends Generator {
       this.destinationPath('build.cmd')
     );
     //README.md copy
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
       { name: this.name }
     );
     //Webpack config copy
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('webpack.config.js'),
       this.destinationPath('webpack.config.js'),
       { name: this.name, filename: this.name, classname: this.classname }
     );
     //Copy Src
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('name.js'),
       this.destinationPath(`src/${this.name}.js`),
       { name: this.name, classname: this.classname }
     );
     //Copy index
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('index.html'),
       this.destinationPath('index.html'),
       { title: this.title, classname: this.classname, name: this.name }
