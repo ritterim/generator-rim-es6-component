@@ -51,19 +51,6 @@ module.exports = class extends Generator {
       this.templatePath('.eslintrc'),
       this.destinationPath('.eslintrc')
     );
-    //gitignore copy
-    if (this.fs.exits(this.templatePath('.npmignore'))) {
-      this.fs.copy(
-        this.templatePath('.npmignore'),
-        this.destinationPath('.gitignore')
-      );
-    } else if (this.fs.exists(this.templatePath('my.gitignore'))) {
-      this.fs.copy(
-        this.templatePath('my.gitignore'),
-        this.destinationPath('.gitignore')
-      );
-    }
-    
     //build.cmd copy
     this.fs.copyTpl(
       this.templatePath('build.cmd'),
