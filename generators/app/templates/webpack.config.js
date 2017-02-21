@@ -11,7 +11,15 @@ Copyright (c) 2017 Ritter Insurance Marketing`),
   })
 ];
 
-
+if (process.env.INCLUDE_WEBPACK_HTML) {
+  plugins.push(
+    new HtmlWebpackPlugin({
+      template: 'demo/index.html',
+      filename: '../index.html',
+      inject: 'head'
+    })
+  );
+}
 
 module.exports = {
   entry: [

@@ -88,10 +88,13 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.dest}/src/${this.name}.js`),
       { name: this.name, classname: this.classname }
     );
+
+    //make the demo directory
+    mkdirp.sync(`${this.dest}/demo`);
     //Copy index
     this.fs.copyTpl(
       this.templatePath('index.html'),
-      this.destinationPath(`${this.dest}/src/index.html`),
+      this.destinationPath(`${this.dest}/demo/index.html`),
       { title: this.title, classname: this.classname, name: this.name }
     );
   }
