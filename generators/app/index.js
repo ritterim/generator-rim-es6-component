@@ -62,11 +62,6 @@ module.exports = class extends Generator {
       this.destinationPath('README.md'),
       { name: this.name }
     );
-    //.gitignore copy
-    this.fs.copy(
-      this.templatePath('.gitignore'),
-      this.destinationPath('.gitignore')
-    );
     //Webpack config copy
     this.fs.copy(
       this.templatePath('webpack.config.js'),
