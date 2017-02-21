@@ -91,7 +91,7 @@ module.exports = class extends Generator {
     //Copy index
     this.fs.copyTpl(
       this.templatePath('index.html'),
-      this.destinationPath(`${this.dest}/index.html`),
+      this.destinationPath(`${this.dest}/src/index.html`),
       { title: this.title, classname: this.classname, name: this.name }
     );
   }
