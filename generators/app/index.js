@@ -31,51 +31,56 @@ module.exports = class extends Generator {
 
   _template() {
     //package.json copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('package.json'),
       this.destinationPath('package.json'),
       { name: this.name }
     );
     //babelrc copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('.babelrc'),
       this.destinationPath('.babelrc')
     );
     //editor config
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('.editorconfig'),
       this.destinationPath('.editorconfig')
     );
     //eslintrc copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('.eslintrc'),
       this.destinationPath('.eslintrc')
     );
     //build.cmd copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('build.cmd'),
       this.destinationPath('build.cmd')
     );
     //README.md copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
       { name: this.name }
     );
+    //.gitignore copy
+    this.fs.copy(
+      this.templatePath('.gitignore'),
+      this.destinationPath('.gitignore')
+    );
     //Webpack config copy
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('webpack.config.js'),
       this.destinationPath('webpack.config.js'),
       { name: this.name, filename: this.name, classname: this.classname }
     );
     //Copy Src
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('name.js'),
       this.destinationPath(`src/${this.name}.js`),
       { name: this.name, classname: this.classname }
     );
     //Copy index
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('index.html'),
       this.destinationPath('index.html'),
       { title: this.title, classname: this.classname, name: this.name }

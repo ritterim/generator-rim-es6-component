@@ -1,6 +1,6 @@
 {
   "name": "generator-rim-es6-component",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Creates an es6 component based on the RimDev component template",
   "files": [
     "generators"
