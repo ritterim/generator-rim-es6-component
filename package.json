@@ -1,0 +1,16 @@
+{
+  "name": "generator-rim-es6-component",
+  "version": "0.1.0",
+  "description": "Creates an es6 component based on the RimDev component template",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "es6",
+    "component"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.0"
+  }
+}

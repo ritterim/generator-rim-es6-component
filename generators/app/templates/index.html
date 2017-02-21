@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+</head>
+<body>
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h1><%= title %></h1>
+      <template data-<%= name %>>
+        
+      </template>
+    </div>
+  </div>
+  <script>
+    //Instantiate component
+    let cmp = new <%= classname %>().init();
+  </script>
+</body>
+</html>

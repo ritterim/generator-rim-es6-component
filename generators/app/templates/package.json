@@ -1,0 +1,36 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "audit": "nsp check package",
+    "build": "webpack",
+    "check": "npm run audit && npm outdated --depth 0",
+    "coverage": "jest --coverage",
+    "lint": "eslint src test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "validate": "npm run lint && npm test",
+    "validate:with-check": "npm run build && npm run validate && npm run check",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-env": "^1.1.8",
+    "eslint": "^3.15.0",
+    "html-webpack-plugin": "^2.28.0",
+    "jest": "^18.1.0",
+    "nsp": "^2.6.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^1.16.3",
+    "whatwg-fetch": "^2.0.2"
+  },
+  "author": "Ritter Insurance Marketing",
+  "license": "UNLICENSED"
+}
