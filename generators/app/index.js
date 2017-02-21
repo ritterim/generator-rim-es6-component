@@ -57,9 +57,9 @@ module.exports = class extends Generator {
         this.templatePath('.npmignore'),
         this.destinationPath('.gitignore')
       );
-    } else if (this.fs.exists(this.templatePath('.gitignore'))) {
+    } else if (this.fs.exists(this.templatePath('my.gitignore'))) {
       this.fs.copy(
-        this.templatePath('.gitignore'),
+        this.templatePath('my.gitignore'),
         this.destinationPath('.gitignore')
       );
     }
