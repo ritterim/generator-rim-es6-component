@@ -2,6 +2,25 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const packageJson = require('./package');
 
+const plugins = [
+  new webpack.BannerPlugin(
+    `<%= name %> v${packageJson.version}
+Copyright (c) 2017 Ritter Insurance Marketing`),
+  new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true
+  })
+];
+
+if (process.env.INCLUDE_WEBPACK_HTML) {
+  plugins.push(
+    new HtmlWebpackPlugin({
+      template: 'demo/index.html',
+      filename: '../index.html',
+      inject: 'head'
+    })
+  );
+}
+
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -26,22 +45,6 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     https: true,
-    setup: function() {
-      module.exports.plugins.push(
-        new HtmlWebpackPlugin({
-          template: 'src/index.html',
-          filename: '../index.html',
-          inject: 'head'
-        })
-      );
-    }
   },
-  plugins: [
-    new webpack.BannerPlugin(
-`<%= name %> v${packageJson.version}
-Copyright (c) 2017 Ritter Insurance Marketing`),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    })
-  ]
+  plugins: plugins
 };
