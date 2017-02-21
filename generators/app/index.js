@@ -56,6 +56,11 @@ module.exports = class extends Generator {
       this.templatePath('build.cmd'),
       this.destinationPath('build.cmd')
     );
+    //gitignore copy
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore')
+    );
     //README.md copy
     this.fs.copyTpl(
       this.templatePath('README.md'),
