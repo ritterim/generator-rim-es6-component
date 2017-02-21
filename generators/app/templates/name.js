@@ -40,4 +40,18 @@ export default class <%= classname %> {
     return this;
   }
 
+  //Template content polyfill for IE
+  templateContent(template) {
+    if("content" in document.createElement("template")) {
+        return document.importNode(template.content, true);
+    } else {
+        var fragment = document.createDocumentFragment();
+        var children = template.childNodes;
+        for (let i = 0; i < children.length; i++) {
+            fragment.appendChild(children[i].cloneNode(true));
+        }
+        return fragment;
+    }
+  }
+
 }

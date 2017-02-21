@@ -5,6 +5,10 @@
   "files": [
     "generators"
   ],
+  "main": "generators/index.js",
+  "engines": {
+    "node": ">=6.1"
+  },
   "keywords": [
     "yeoman-generator",
     "es6",
@@ -12,5 +16,9 @@
   ],
   "dependencies": {
     "yeoman-generator": "^1.1.0"
+  },
+  "author": {
+    "name": "Ritter Insurance Marketing",
+    "url": "https://github.com/ritterim"
   }
 }
