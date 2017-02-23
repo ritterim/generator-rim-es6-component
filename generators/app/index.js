@@ -79,7 +79,7 @@ module.exports = class extends Generator {
     //Test copy
     this.fs.copyTpl(
       this.templatePath('spec.js'),
-      this.destinationPath(`${this.dest}/test/${this.name}.spec.js`),
+      this.destinationPath(`${this.dest}/test/${this.name}.test.js`),
       { classname: this.classname, filename: this.name }
     );
     //Webpack config copy

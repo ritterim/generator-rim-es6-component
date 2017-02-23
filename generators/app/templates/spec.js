@@ -5,7 +5,7 @@ beforeEach(() => {
   document.body.innerHTML = '';
 });
 
-test('should work', () => {
+test('should construct', () => {
   const sut = new <%= classname %>();
 
   expect(sut).toBeTruthy();
