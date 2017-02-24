@@ -9,7 +9,7 @@ npm install -g yeoman-generator generator-rim-es6-component
 Run the generator, move into the directory, install and start the project.
 
 ```
-yo rim-es6-generator [app-name]
+yo rim-es6-component [app-name]
 cd [app-name]
 npm install
 npm start
