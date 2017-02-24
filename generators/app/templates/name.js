@@ -17,6 +17,7 @@ export default class <%= classname %> {
     }
   }
 
+  // Initialize Component: Find all component elements  
   init(domScope = this.configuration.defaultDomScope) {
     if (!domScope) {
       throw new Error('domScope must be provided.');
@@ -28,13 +29,23 @@ export default class <%= classname %> {
     return this;
   }
 
+  // Create component elements in DOM
   create(element) {
     if (!element) {
       throw new Error('element must be provided.');
     }
 
-    /* Element Setup */
+    // Retrieve contents from template using polyfill
+    let templateContents = this.templateContent(element);
+    // Clone the template
+    let tmpClone = templateContents.cloneNode(true);
 
+    /* Implement Component Logic Here Via tmpClone */
+
+    // Insert the element back in by the template
+    element.parentNode.insertBefore(tmpClone, element.parentNode.lastChild);
+
+    // Set the element to initialized    
     element.setAttribute(this.configuration.initializedDataAttribute, true);
 
     return this;
