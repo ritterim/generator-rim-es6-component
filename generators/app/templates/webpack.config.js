@@ -14,8 +14,8 @@ Copyright (c) 2017 Ritter Insurance Marketing`),
 if (process.env.INCLUDE_WEBPACK_HTML) {
   plugins.push(
     new HtmlWebpackPlugin({
-      template: 'demo/index.html',
-      filename: '../index.html',
+      template: __dirname + '/demo/index.html',
+      filename: 'index.html',
       inject: 'head'
     })
   );
@@ -27,7 +27,7 @@ module.exports = {
     './src/<%= filename %>.js'
   ],
   output: {
-    path: './lib',
+    path: __dirname + '/lib',
     filename: '<%= filename %>.min.js',
     library: '<%= classname %>',
     libraryTarget: 'umd',
