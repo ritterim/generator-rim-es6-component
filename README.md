@@ -6,12 +6,11 @@ Install the generator and yeoman via NPM
 npm install -g yeoman-generator generator-rim-es6-component
 ```
 
-Run the generator, move into the directory, install and start the project.
+Run the generator, move into the directory, and start the project. The generator will automatically install your dependencies unless you choose to skip it (`--skip-install`). You may choose to use yarn instead of npm for the installation by using the `--yarn` argument.
 
 ```
-yo rim-es6-component [app-name]
+yo rim-es6-component [app-name] [--yarn] [--skip-install]
 cd [app-name]
-npm install
 npm start
 ```
 

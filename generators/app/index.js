@@ -1,5 +1,7 @@
 var Generator = require('yeoman-generator');
 var mkdirp = require('mkdirp');
+var yosay = require('yosay');
+var chalk = require('chalk');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -7,18 +9,31 @@ module.exports = class extends Generator {
 
     this.argument('appname', { type: String, required: false });
 
-    this.log(this.options.appname);
+    this.option('yarn');
+    this.option('skip-install');
   }
 
   prompting() {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your component name in snake-case (e.g. my-component-name)',
-      default: (this.options.appname) ? this.options.appname : 'my-component'
-    }]).then((answers) => {
+    this._greeting();
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your component name in snake-case (e.g. my-component-name)',
+        default: (this.options.appname) ? this.options.appname : 'my-component'
+      },
+      {
+        type: 'list',
+        name: 'withFetch',
+        message: 'Would you like to include a fetch polyfill?',
+        choices: ['Yes', 'No']
+      }
+    ]).then((answers) => {
+      //Assign answers
       this.name = answers.name;
       this.dest = answers.name;
+      this.withFetch = (answers.withFetch === 'Yes') ? true : false;
+      
       const find = /(\-\w)/g;
       const convertCamel = function (matches) {
         return matches[1].toUpperCase();
@@ -26,11 +41,25 @@ module.exports = class extends Generator {
       const convertTitle = function (matches) {
         return ' ' + matches[1].toUpperCase();
       }
+
+      //Prepare string/class names
       let camelString = answers.name.replace(find, convertCamel);
       let titleString = answers.name.replace(find, convertTitle);
       this.title = titleString.charAt(0).toUpperCase() + titleString.substr(1);
       this.classname = camelString.charAt(0).toUpperCase() + camelString.substr(1);
+      
+      // Generate templates
       this._template();
+      
+      // Install dependencies
+      if (!this.options['skip-install']) {
+        this.destinationRoot(`${this.dest}`);
+        this.installDependencies({
+          npm: (this.options.yarn) ? false : true,
+          bower: false,
+          yarn: (this.options.yarn) ? true : false
+        });
+      }
     });
   }
 
@@ -43,7 +72,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath(`${this.dest}/package.json`),
-      { name: this.name }
+      { name: this.name, withFetch: this.withFetch }
     );
     //babelrc copy
     this.fs.copy(
@@ -86,7 +115,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('webpack.config.js'),
       this.destinationPath(`${this.dest}/webpack.config.js`),
-      { name: this.name, filename: this.name, classname: this.classname }
+      { name: this.name, filename: this.name, classname: this.classname, withFetch: this.withFetch }
     );
     //Copy Src
     this.fs.copyTpl(
@@ -103,6 +132,11 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.dest}/demo/index.html`),
       { title: this.title, classname: this.classname, name: this.name }
     );
+  }
+
+  _greeting() {
+    this.log(yosay('Welcome to the RimDev ES6 Component Generator!'));
+    this.log('Tests are setup using ', chalk.bgMagenta('Jest'), '. ', chalk.bgCyan('Webpack'), ' is also preconfigured with the webpack-dev-server.');
   }
 
 }
