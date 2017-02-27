@@ -5,7 +5,7 @@
     "url": "https://github.com/ritterim/generator-rim-es6-component"
   },
   "license": "MIT",
-  "version": "0.1.13",
+  "version": "1.0.0",
   "description": "Creates an es6 component based on the RimDev component template",
   "files": [
     "generators"
