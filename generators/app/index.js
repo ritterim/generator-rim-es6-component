@@ -8,6 +8,9 @@ module.exports = class extends Generator {
     super(args, opts);
 
     this.argument('appname', { type: String, required: false });
+
+    this.option('yarn');
+    this.option('skip-install');
   }
 
   prompting() {
@@ -26,9 +29,11 @@ module.exports = class extends Generator {
         choices: ['Yes', 'No']
       }
     ]).then((answers) => {
+      //Assign answers
       this.name = answers.name;
       this.dest = answers.name;
       this.withFetch = (answers.withFetch === 'Yes') ? true : false;
+      
       const find = /(\-\w)/g;
       const convertCamel = function (matches) {
         return matches[1].toUpperCase();
@@ -36,11 +41,25 @@ module.exports = class extends Generator {
       const convertTitle = function (matches) {
         return ' ' + matches[1].toUpperCase();
       }
+
+      //Prepare string/class names
       let camelString = answers.name.replace(find, convertCamel);
       let titleString = answers.name.replace(find, convertTitle);
       this.title = titleString.charAt(0).toUpperCase() + titleString.substr(1);
       this.classname = camelString.charAt(0).toUpperCase() + camelString.substr(1);
+      
+      // Generate templates
       this._template();
+      
+      // Install dependencies
+      if (!this.options['skip-install']) {
+        this.destinationRoot(`${this.dest}`);
+        this.installDependencies({
+          npm: (this.options.yarn) ? false : true,
+          bower: false,
+          yarn: (this.options.yarn) ? true : false
+        });
+      }
     });
   }
 
