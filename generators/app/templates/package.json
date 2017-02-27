@@ -29,7 +29,7 @@
     "jest": "^18.1.0",
     "nsp": "^2.6.1",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^1.16.3",
+    "webpack-dev-server": "^2.4.1",
     "whatwg-fetch": "^2.0.2"
   },
   "author": "Ritter Insurance Marketing",
