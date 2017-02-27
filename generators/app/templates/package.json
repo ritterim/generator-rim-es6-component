@@ -30,7 +30,7 @@
     "jest": "^19.0.2",
     "nsp": "^2.6.1",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1",
+    "webpack-dev-server": "^2.4.1"
   },
   "author": "Ritter Insurance Marketing",
   "license": "UNLICENSED"
