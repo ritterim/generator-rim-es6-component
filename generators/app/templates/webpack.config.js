@@ -23,6 +23,7 @@ if (process.env.INCLUDE_WEBPACK_HTML) {
 
 module.exports = {
   entry: [
+    <%- withFetch ? "'whatwg-fetch'," : '' %>
     'babel-polyfill',
     './src/<%= filename %>.js'
   ],

@@ -1,24 +1,34 @@
 var Generator = require('yeoman-generator');
 var mkdirp = require('mkdirp');
+var yosay = require('yosay');
+var chalk = require('chalk');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
     this.argument('appname', { type: String, required: false });
-
-    this.log(this.options.appname);
   }
 
   prompting() {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your component name in snake-case (e.g. my-component-name)',
-      default: (this.options.appname) ? this.options.appname : 'my-component'
-    }]).then((answers) => {
+    this._greeting();
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your component name in snake-case (e.g. my-component-name)',
+        default: (this.options.appname) ? this.options.appname : 'my-component'
+      },
+      {
+        type: 'list',
+        name: 'withFetch',
+        message: 'Would you like to include a fetch polyfill?',
+        choices: ['Yes', 'No']
+      }
+    ]).then((answers) => {
       this.name = answers.name;
       this.dest = answers.name;
+      this.withFetch = (answers.withFetch === 'Yes') ? true : false;
       const find = /(\-\w)/g;
       const convertCamel = function (matches) {
         return matches[1].toUpperCase();
@@ -43,7 +53,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath(`${this.dest}/package.json`),
-      { name: this.name }
+      { name: this.name, withFetch: this.withFetch }
     );
     //babelrc copy
     this.fs.copy(
@@ -86,7 +96,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('webpack.config.js'),
       this.destinationPath(`${this.dest}/webpack.config.js`),
-      { name: this.name, filename: this.name, classname: this.classname }
+      { name: this.name, filename: this.name, classname: this.classname, withFetch: this.withFetch }
     );
     //Copy Src
     this.fs.copyTpl(
@@ -103,6 +113,11 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.dest}/demo/index.html`),
       { title: this.title, classname: this.classname, name: this.name }
     );
+  }
+
+  _greeting() {
+    this.log(yosay('Welcome to the RimDev ES6 Component Generator!'));
+    this.log('Tests are setup using ', chalk.bgMagenta('Jest'), '. ', chalk.bgCyan('Webpack'), ' is also preconfigured with the webpack-dev-server.');
   }
 
 }
