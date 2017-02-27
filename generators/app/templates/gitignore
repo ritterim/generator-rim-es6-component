@@ -1,7 +1,5 @@
 # Custom
-test/.temp
 lib/
-.awcache/
 
 # Logs
 logs
@@ -16,7 +14,6 @@ pids
 # Coverage directory used by tools like istanbul
 coverage
 lib-cov
-.nyc_output
 
 # node-waf configuration
 .lock-wscript
