@@ -24,7 +24,6 @@ if (process.env.INCLUDE_WEBPACK_HTML) {
 module.exports = {
   entry: [
     'babel-polyfill',
-    'whatwg-fetch',
     './src/<%= filename %>.js'
   ],
   output: {
