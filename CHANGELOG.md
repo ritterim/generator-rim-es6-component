@@ -1,3 +1,7 @@
+ # 1.2.2
+ - Add appveyor
+ - Add appveyor build badge
+
  # 1.2.1
  - Add badges to README
  - Add project start to generated README
