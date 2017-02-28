@@ -1,4 +1,5 @@
 # RimDev ES6 component generator
+![build status](https://ci.appveyor.com/api/projects/status/ae1taoboaxyvy3ou?svg=true)
 ![npm version](https://img.shields.io/npm/v/generator-rim-es6-component.svg)
 ![npm downloads](https://img.shields.io/npm/dt/generator-rim-es6-component.svg)
 
