@@ -1,4 +1,5 @@
 # RimDev ES6 component generator
+![npm version](https://img.shields.io/npm/v/generator-rim-es6-component.svg)
 
 Install the generator and yeoman via NPM
 
