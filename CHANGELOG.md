@@ -1,3 +1,6 @@
+ # 1.2.3
+ - Fix appveyor badge
+
  # 1.2.2
  - Add appveyor
  - Add appveyor build badge
