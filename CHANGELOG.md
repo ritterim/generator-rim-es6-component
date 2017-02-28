@@ -4,3 +4,12 @@
  - Upgrade Jest major version.
  - Add prepublish script to ensure successful build before publish. 
  - Update webpack-dev-server
+
+ # 1.2.0
+ - Add installing dependencies after project creation
+ - Add `--skip-install` CLI option
+ - Add `--yarn` CLI option
+
+ # 1.2.1
+ - Add badges to README
+ - Add project start to generated README
