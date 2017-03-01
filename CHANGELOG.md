@@ -1,3 +1,6 @@
+ # 1.2.4
+ - Add Mocha for testing the generator
+
  # 1.2.3
  - Fix appveyor badge
 

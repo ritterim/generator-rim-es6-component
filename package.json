@@ -5,11 +5,14 @@
     "url": "https://github.com/ritterim/generator-rim-es6-component"
   },
   "license": "MIT",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Creates an es6 component based on the RimDev component template",
   "files": [
     "generators"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "main": "generators/index.js",
   "engines": {
     "node": ">=6.1"
@@ -28,5 +31,9 @@
   "author": {
     "name": "Ritter Insurance Marketing",
     "url": "https://github.com/ritterim"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "yeoman-test": "^1.6.0"
   }
 }
