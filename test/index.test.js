@@ -1,5 +1,6 @@
 var path = require('path');
 var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
 
 describe('Rim ES6 component generator', function() {
   beforeEach(function(done) {
@@ -13,49 +14,41 @@ describe('Rim ES6 component generator', function() {
         this.app = helpers.createGenerator('rim-es6-component', [
           '../../generators/app'
         ]);
-        done();
+        helpers.mockPrompt(this.app, {
+          name: 'test-app',
+          withFetch: 'No'
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run(done);
       }).bind(this)
     );
   });
 
-  it('creates expected config files', function() {
+  it('creates expected config files', function () {
     var expected = [
-      '.editorconfig',
-      '.gitignore',
-      '.eslintrc',
-      '.babelrc',
-      'package.json',
-      'build.cmd',
-      'README.md',
-      'webpack.config.js'
+      'test-app/.editorconfig',
+      'test-app/.gitignore',
+      'test-app/.eslintrc',
+      'test-app/.babelrc',
+      'test-app/package.json',
+      'test-app/build.cmd',
+      'test-app/README.md',
+      'test-app/webpack.config.js'
     ];
 
-    helpers.mockPrompt(this.app, {
-      name: 'test-app',
-      withFetch: 'No'
-    });
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function() {
-      helpers.assertFile(expected);
-      done();
-    });
+    assert.file(expected);
+
   });
 
   it('creates expected source files', function() {
     var expected = [
-      'src/test-app.js',
-      'test/test-app.test.js'
+      'test-app/src/test-app.js',
+      'test-app/test/test-app.test.js'
     ];
 
-    helpers.mockPrompt(this.app, {
-      name: 'test-app',
-      withFetch: 'No'
-    });
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function() {
-      helpers.assertFile(expected);
-      done();
-    });
+
+    assert.file(expected);
+
   });
 
 });

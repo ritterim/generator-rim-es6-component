@@ -1,3 +1,6 @@
+ # 1.2.5
+ - Fix mocha to run the generator/assert correctly
+ 
  # 1.2.4
  - Add Mocha for testing the generator
 
