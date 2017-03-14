@@ -1,7 +1,7 @@
 # RimDev ES6 component generator
 [![Build status](https://ci.appveyor.com/api/projects/status/ae1taoboaxyvy3ou?svg=true)](https://ci.appveyor.com/project/RimDev/generator-rim-es6-component)
-![npm version](https://img.shields.io/npm/v/generator-rim-es6-component.svg)
-![npm downloads](https://img.shields.io/npm/dt/generator-rim-es6-component.svg)
+[![npm version](https://img.shields.io/npm/v/generator-rim-es6-component.svg)](https://www.npmjs.com/package/generator-rim-es6-component)
+[![npm downloads](https://img.shields.io/npm/dt/generator-rim-es6-component.svg)](https://www.npmjs.com/package/generator-rim-es6-component)
 
 Install the generator and yeoman via NPM
 
